@@ -1,12 +1,12 @@
 import React from 'react'
-import {Router} from 'react-router-dom'
-import {render, wait} from 'react-testing-library'
-import {createMemoryHistory} from 'history'
+import { Router } from 'react-router-dom'
+import { render, wait } from 'react-testing-library'
+import { createMemoryHistory } from 'history'
 import 'jest-dom/extend-expect'
 import * as generate from 'til-shared/generate'
 
-function renderWithRouter(ui, {route = '/', ...renderOptions} = {}) {
-  const history = createMemoryHistory({initialEntries: [route]})
+function renderWithRouter(ui, { route = '/', ...renderOptions } = {}) {
+  const history = createMemoryHistory({ initialEntries: [route] })
   const utils = render(<Router history={history}>{ui}</Router>, renderOptions)
   const finishLoading = () =>
     wait(() => expect(utils.queryByText('Loading')).toBeNull())
@@ -25,4 +25,4 @@ export {
   renderIntoDocument,
   fireEvent,
 } from 'react-testing-library'
-export {renderWithRouter, generate}
+export { renderWithRouter, generate }
